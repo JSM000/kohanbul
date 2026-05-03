@@ -60,5 +60,11 @@ content:
           - { name: year, label: 연도, type: number }
           - { name: festival, label: 영화제, type: string }
           - { name: award, label: 수상내역, type: string }
-          - { name: type, label: 유형, type: select, options: [award, screening] }
+          - name: type
+            label: 유형
+            type: select
+            options:
+              values:
+                - award
+                - screening
       - { name: body, label: Synopsis, type: rich-text }
