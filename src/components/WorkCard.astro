@@ -15,7 +15,7 @@ const { slug, title_ko, title_en, year, type, runtime_min, thumbnail, excerpt } 
 
 <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/works/${slug}`} class="work-card">
   <div class="work-card__image">
-    <img src={thumbnail} alt={title_ko} loading="lazy" />
+    <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${thumbnail}`} alt={title_ko} loading="lazy" />
   </div>
   <div class="work-card__info">
     <p class="work-card__meta">

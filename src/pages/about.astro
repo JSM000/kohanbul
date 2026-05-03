@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <div class="about-layout">
       <aside class="about-profile">
-        <img src={profile_image} alt={`${name_ko} 프로필 사진`} />
+        <img src={`${base}${profile_image}`} alt={`${name_ko} 프로필 사진`} />
         <div class="about-profile__info">
           <p class="about-profile__name-en">{name_en}</p>
           <p class="about-profile__name-ko">{name_ko}</p>

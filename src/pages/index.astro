@@ -42,7 +42,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
       <div class="hero__profile">
         <img
-          src={director.data.profile_image}
+          src={`${base}${director.data.profile_image}`}
           alt={`${director.data.name_ko} 프로필`}
         />
       </div>
