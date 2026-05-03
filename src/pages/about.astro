@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { filmography } from '../data/filmography';
+
+const filmography = (await getCollection('filmography'))
+  .sort((a, b) => a.data.order - b.data.order);
 
 const [director] = await getCollection('director');
 const { Content: BioContent } = await render(director);
@@ -44,12 +46,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <section class="about-section">
           <h2 class="section-label">Filmography</h2>
           <ul class="about-filmo">
-            {filmography.map(({ year, title_ko, roles, slug }) => (
+            {filmography.map(({ data: { year, title_ko, roles, work_slug } }) => (
               <li class="about-filmo__item">
                 <span class="about-filmo__year">{year}</span>
                 <span class="about-filmo__body">
-                  {slug
-                    ? <a href={`${base}/works/${slug.replace(/\.md$/, '')}`}>{title_ko}</a>
+                  {work_slug
+                    ? <a href={`${base}/works/${work_slug}`}>{title_ko}</a>
                     : <span>{title_ko}</span>
                   }
                   <span class="about-filmo__roles">{roles.join(' · ')}</span>

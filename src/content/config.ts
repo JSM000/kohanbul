@@ -53,7 +53,22 @@ const directorCollection = defineCollection({
   }),
 });
 
+const filmographyCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    year: z.number(),
+    title_ko: z.string(),
+    title_en: z.string().optional().default(''),
+    roles: z.array(z.string()),
+    role_detail: z.string().optional(),
+    type: z.string().optional().default(''),
+    work_slug: z.string().optional().default(''),
+    order: z.number().default(99),
+  }),
+});
+
 export const collections = {
   works: worksCollection,
   director: directorCollection,
+  filmography: filmographyCollection,
 };

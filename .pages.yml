@@ -13,8 +13,16 @@ content:
       - { name: birth_year_display, label: 출생/연도 표기, type: string }
       - { name: primary_role, label: 대표 분야, type: string }
       - { name: profile_image, label: 프로필 사진, type: image }
+      - { name: body, label: 국문 소개문, type: rich-text }
       - { name: bio_en, label: 영문 소개문, type: string }
       - { name: email, label: 이메일, type: string }
+      - name: sns
+        label: SNS
+        type: object
+        fields:
+          - { name: instagram, label: Instagram, type: string }
+          - { name: vimeo, label: Vimeo, type: string }
+          - { name: youtube, label: YouTube, type: string }
 
   - name: works
     label: Works
@@ -68,3 +76,21 @@ content:
                 - award
                 - screening
       - { name: body, label: Synopsis, type: rich-text }
+
+  - name: filmography
+    label: Filmography
+    type: collection
+    path: src/content/filmography
+    filename: "{fields.year}-{fields.title_ko}.md"
+    fields:
+      - { name: year, label: 연도, type: number, required: true }
+      - { name: title_ko, label: 국문 제목, type: string, required: true }
+      - { name: title_en, label: 영문 제목, type: string }
+      - name: roles
+        label: 역할
+        type: string
+        list: true
+      - { name: role_detail, label: 역할 상세, type: string }
+      - { name: type, label: 유형, type: string }
+      - { name: work_slug, label: 작품 페이지 Slug, type: string }
+      - { name: order, label: 정렬 순서, type: number }
