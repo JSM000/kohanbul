@@ -67,11 +67,13 @@ const filmographyCollection = defineCollection({
   }),
 });
 
+const dateString = z.coerce.date().transform(d => d.toISOString().split('T')[0]);
+
 const notesCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    date: z.string(),
+    date: dateString,
     excerpt: z.string().optional(),
   }),
 });
@@ -82,7 +84,7 @@ const criticismCollection = defineCollection({
     title: z.string(),
     author: z.string(),
     source: z.string().optional(),
-    date: z.string(),
+    date: dateString,
     film: z.string().optional(),
     excerpt: z.string().optional(),
   }),
